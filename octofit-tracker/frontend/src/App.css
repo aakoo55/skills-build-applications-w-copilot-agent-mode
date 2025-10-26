@@ -1,0 +1,129 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* OctoFit additional styles */
+.container {
+  max-width: 1100px;
+}
+.card-title {
+  margin: 0;
+}
+.table td, .table th {
+  vertical-align: middle;
+}
+.card {
+  border-radius: 0.6rem;
+}
+.navbar-brand {
+  font-weight: 700;
+}
+
+/* Color theme */
+:root{
+  --bg-start: #f5fbff;
+  --bg-end: #e8f0ff;
+  --accent: #0072ff;
+  --accent-2: #00c6ff;
+  --muted: #6c757d;
+  --card-bg: #ffffff;
+  --table-header: #f0f7ff;
+  --heading-color: #063a3e;
+  --link-color: #0056d6;
+  --nav-bg: linear-gradient(90deg, var(--accent-2), var(--accent));
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+  color: #113;
+}
+
+.octofit-navbar {
+  background: var(--nav-bg);
+  color: white;
+}
+.octofit-navbar .nav-link {
+  color: rgba(255,255,255,0.9);
+}
+.octofit-navbar .nav-link.active {
+  color: #fff;
+  font-weight: 700;
+}
+.octo-brand-text{
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.card {
+  background: var(--card-bg);
+  box-shadow: 0 6px 20px rgba(15,30,50,0.06);
+}
+
+.table thead th {
+  background: var(--table-header);
+  color: var(--heading-color);
+}
+
+.table tbody tr:hover {
+  background: rgba(0,114,255,0.03);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+h2, h3, h4 {
+  color: var(--heading-color);
+}
+
+a {
+  color: var(--link-color);
+}
+a:hover { text-decoration: underline; }
+
+.text-muted { color: var(--muted) !important; }
+
+/* small responsive tweaks */
+@media (max-width: 576px) {
+  .octo-brand-text { display: none; }
+}
