@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#00c6ff"/>
+      <stop offset="100%" stop-color="#0072ff"/>
+    </linearGradient>
+  </defs>
+  <!-- simple octopus head -->
+  <g transform="translate(6,4)">
+    <circle cx="14" cy="14" r="12" fill="url(#g1)" />
+    <circle cx="10" cy="12" r="2" fill="#fff" />
+    <circle cx="18" cy="12" r="2" fill="#fff" />
+    <!-- smile -->
+    <path d="M7 18 q7 6 14 0" stroke="#ffffff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- text -->
+  <g transform="translate(40,26)">
+    <text x="0" y="-4" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="700" fill="#072" >Octo</text>
+    <text x="40" y="-4" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="700" fill="#0072ff">Fit</text>
+  </g>
+</svg>
