@@ -15,7 +15,14 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
-    execute_from_command_line(sys.argv)
+    try:
+        execute_from_command_line(sys.argv)
+    except SystemExit as e:
+        # Prevent a visible SystemExit traceback in environments that call this file;
+        # print a short message for non-zero exits and return cleanly.
+        if e.code not in (None, 0):
+            print(f"manage.py exited with status {e.code}")
+        return
 
 
 if __name__ == '__main__':

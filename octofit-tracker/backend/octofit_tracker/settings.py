@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,27 @@ SECRET_KEY = 'django-insecure-39)oeqk!wh0wi6qrg@rfs&ideck8w=q4)wy&#3%c)z@%&r7d$e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# Configure allowed hosts from Codespace environment variable so the app
+# works both on localhost and in a GitHub Codespace URL like
+# $CODESPACE_NAME-8000.app.github.dev
+CODESPACE_NAME = os.environ.get('CODESPACE_NAME')
+codespace_host = None
+if CODESPACE_NAME:
+    codespace_host = f"{CODESPACE_NAME}-8000.app.github.dev"
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+if codespace_host:
+    ALLOWED_HOSTS.append(codespace_host)
+
+# When running behind Codespaces HTTPS endpoint, include it in the
+# CSRF trusted origins to avoid CSRF/HTTPS certificate-related rejections.
+CSRF_TRUSTED_ORIGINS = []
+if codespace_host:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{codespace_host}")
+
+# Do not force HTTPS redirects in development here; Codespaces fronting may
+# terminate TLS, so keep redirects off to avoid certificate issues.
+SECURE_SSL_REDIRECT = False
 
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
