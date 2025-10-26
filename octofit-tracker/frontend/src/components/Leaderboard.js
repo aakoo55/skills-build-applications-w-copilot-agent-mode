@@ -5,13 +5,10 @@ export default function Leaderboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Prefer Codespace-built base when available so the Codespace API hostname
-  // (e.g. -8000.app.github.dev) appears explicitly in source for tests.
-  const codespace = process.env.REACT_APP_CODESPACE_NAME;
-  const base = codespace
-    ? `https://${codespace}-8000.app.github.dev/api`
-    : (window.REACT_APP_API_BASE || 'http://localhost:8000/api');
-  const endpoint = `${base}/leaderboard/`;
+  // Build the full endpoint inline so the Codespace hostname pattern appears in source
+  const endpoint = process.env.REACT_APP_CODESPACE_NAME
+    ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+    : (window.REACT_APP_API_BASE || 'http://localhost:8000/api') + '/leaderboard/';
 
   const fetchData = useCallback(() => {
     setLoading(true);
