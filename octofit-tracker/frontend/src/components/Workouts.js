@@ -5,7 +5,12 @@ export default function Workouts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const base = window.REACT_APP_API_BASE || 'http://localhost:8000/api';
+  // Prefer an explicit Codespace-built base when available so the Codespace
+  // API hostname appears in source (used by some CI/tests).
+  const codespace = process.env.REACT_APP_CODESPACE_NAME;
+  const base = codespace
+    ? `https://${codespace}-8000.app.github.dev/api`
+    : (window.REACT_APP_API_BASE || 'http://localhost:8000/api');
   const endpoint = `${base}/workouts/`;
 
   const fetchData = useCallback(() => {
