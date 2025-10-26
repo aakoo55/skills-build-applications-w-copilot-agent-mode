@@ -52,8 +52,4 @@ class Command(BaseCommand):
         Leaderboard.objects.create(user=user_objs[2], score=95)
         Leaderboard.objects.create(user=user_objs[3], score=85)
 
-        # Ensure unique index on email for user collection
-        with connection.cursor() as cursor:
-            cursor.execute('db.userprofile.createIndex({ "email": 1 }, { "unique": true })')
-
         self.stdout.write(self.style.SUCCESS('Populate the octofit_db database with test data completed.'))
