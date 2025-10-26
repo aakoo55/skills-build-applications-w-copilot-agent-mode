@@ -5,7 +5,12 @@ export default function Activities() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const base = window.REACT_APP_API_BASE || 'http://localhost:8000/api';
+  // Prefer Codespace-built base when available so the Codespace API hostname
+  // (e.g. -8000.app.github.dev) appears explicitly in source for tests.
+  const codespace = process.env.REACT_APP_CODESPACE_NAME;
+  const base = codespace
+    ? `https://${codespace}-8000.app.github.dev/api`
+    : (window.REACT_APP_API_BASE || 'http://localhost:8000/api');
   const endpoint = `${base}/activities/`;
 
   const fetchData = useCallback(() => {
